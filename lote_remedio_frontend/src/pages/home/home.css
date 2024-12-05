@@ -1,0 +1,85 @@
+/* Estilo geral da página */
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eaf7ff;
+    padding: 2vh; /* Use vh para proporção à altura da tela */
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Botões principais e de navegação */
+.action-buttons, .navigation-buttons {
+    display: flex;
+    gap: 3vw; /* Espaçamento relativo à largura da tela */
+    margin-bottom: 5vh;
+}
+
+.action-button, .nav-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 15vw; /* Relativo à largura */
+    height: 15vw; /* Relativo à largura para manter proporção */
+    border-radius: 2vw;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.action-button .icon, .nav-button .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5vw;
+}
+
+.action-button:hover, .nav-button:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos específicos para cores dos botões */
+.nav-button.red {
+    background: linear-gradient(90deg, #ff7e7e, #ff4c4c);
+}
+
+.nav-button.blue {
+    background: linear-gradient(90deg, #7ecbff, #007bff);
+}
+
+.action-button {
+    background: linear-gradient(90deg, #c8ebff, #007bff);
+}
+
+.action-button .icon {
+    margin-right: 1vw;
+}
+
+/* Cabeçalho com botão de sair */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1vh 2vw;
+    background-color: #eaf7ff;
+}
+
+.logout-button {
+    background: linear-gradient(90deg, #ff7e7e, #ff4c4c);
+    border: none;
+    border-radius: 2vw;
+    padding: 0.5vh 2vw;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    transform: scale(1.1);
+    background: #ff4c4c;
+}

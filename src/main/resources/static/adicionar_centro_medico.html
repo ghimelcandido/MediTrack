@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Centro Médico</title>
+</head>
+<body>
+<h1>Adicionar Centro Médico</h1>
+
+<form id="form-centro-medico">
+    <label for="nome">Nome do Centro Médico:</label>
+    <input type="text" id="nome" name="nome" required><br><br>
+
+    <label for="bairro">Bairro:</label>
+    <input type="text" id="bairro" name="bairro" required><br><br>
+
+    <button type="submit">Adicionar Centro Médico</button>
+</form>
+
+<script>
+    document.getElementById('form-centro-medico').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const nome = document.getElementById('nome').value;
+        const bairro = document.getElementById('bairro').value;
+
+        const centroMedico = {
+            nome: nome,
+            bairro: bairro
+        };
+
+        fetch('http://localhost:8080/centros-medicos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(centroMedico)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Centro Médico adicionado:', data);
+                alert('Centro Médico adicionado com sucesso!');
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao adicionar Centro Médico');
+            });
+    });
+</script>
+
+</body>
+</html>

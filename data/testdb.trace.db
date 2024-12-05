@@ -1,0 +1,143 @@
+2024-12-03 18:09:05.769844-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIO" already exists; SQL statement:
+CREATE TABLE USUARIO (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    NOME VARCHAR(255) NOT NULL,
+    SENHA VARCHAR(255) NOT NULL
+) [42101-232]
+2024-12-03 18:09:16.568002-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CENTRO_MEDICO" already exists; SQL statement:
+CREATE TABLE CENTRO_MEDICO (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    NOME VARCHAR(255) NOT NULL,
+    BAIRRO VARCHAR(255) NOT NULL
+) [42101-232]
+2024-12-03 18:09:25.896720-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LOTE_REMEDIO" already exists; SQL statement:
+CREATE TABLE LOTE_REMEDIO (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    NOME VARCHAR(255) NOT NULL,
+    QUANTIDADE INT NOT NULL,
+    CENTRO_MEDICO_ID BIGINT NOT NULL,
+    USUARIO_ID BIGINT, -- Referência ao usuário que reservou o remédio
+    CONSTRAINT FK_LOTE_REMEDIO_CENTRO_MEDICO FOREIGN KEY (CENTRO_MEDICO_ID) REFERENCES CENTRO_MEDICO(ID),
+    CONSTRAINT FK_LOTE_REMEDIO_USUARIO FOREIGN KEY (USUARIO_ID) REFERENCES USUARIO(ID)
+) [42101-232]
+2024-12-03 18:58:13.160418-03:00 database: close
+org.h2.message.DbException: IO Exception: "Closing" [90028-232]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.close(Store.java:374)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1292)
+	at org.h2.engine.Database.closeImpl(Database.java:1254)
+	at org.h2.engine.Database.close(Database.java:1173)
+	at org.h2.engine.Database.onShutdown(Database.java:1158)
+	at org.h2.engine.OnExitDatabaseCloser.onShutdown(OnExitDatabaseCloser.java:85)
+	at org.h2.engine.OnExitDatabaseCloser.run(OnExitDatabaseCloser.java:114)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "Closing" [90028-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 8 more
+Caused by: org.h2.mvstore.MVStoreException: java.lang.AssertionError [2.3.232/3]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.MVStore.executeFilestoreOperation(MVStore.java:926)
+	at org.h2.mvstore.RandomAccessStore.compactMoveChunks(RandomAccessStore.java:463)
+	at org.h2.mvstore.RandomAccessStore.compactStore(RandomAccessStore.java:443)
+	at org.h2.mvstore.FileStore.compactStore(FileStore.java:890)
+	at org.h2.mvstore.FileStore.stop(FileStore.java:275)
+	at org.h2.mvstore.MVStore.closeStore(MVStore.java:693)
+	at org.h2.mvstore.MVStore.close(MVStore.java:643)
+	at org.h2.mvstore.db.Store.close(Store.java:364)
+	... 6 more
+Caused by: java.lang.AssertionError
+	at org.h2.mvstore.RandomAccessStore.moveChunkInside(RandomAccessStore.java:630)
+	at org.h2.mvstore.RandomAccessStore.compactMoveChunks(RandomAccessStore.java:569)
+	at org.h2.mvstore.RandomAccessStore.compactMoveChunks(RandomAccessStore.java:481)
+	at org.h2.mvstore.RandomAccessStore.lambda$compactMoveChunks$1(RandomAccessStore.java:468)
+	at org.h2.mvstore.FileStore.executeFileStoreOperation(FileStore.java:1893)
+	at org.h2.mvstore.MVStore.executeFilestoreOperation(MVStore.java:922)
+	... 13 more
+2024-12-04 01:08:08.250269-03:00 jdbc[43]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE usuario\000d\000a[*]MODIFY COLUMN email VARCHAR(255) NOT NULL"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE usuario
+MODIFY COLUMN email VARCHAR(255) NOT NULL [42001-232]
+2024-12-04 01:08:26.676779-03:00 jdbc[43]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE usuario\000d\000a[*]MODIFY COLUMN email VARCHAR(255) NOT NULL"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE usuario
+MODIFY COLUMN email VARCHAR(255) NOT NULL [42001-232]
+2024-12-04 01:08:44.374027-03:00 jdbc[43]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]MODIFY COLUMN email VARCHAR(255) NOT NULL"; expected "MERGE"; SQL statement:
+MODIFY COLUMN email VARCHAR(255) NOT NULL [42001-232]
+2024-12-04 23:16:43.165197-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIOS" not found; SQL statement:
+CREATE TABLE RESERVA (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    lote_remedio_id BIGINT NOT NULL,
+    quantidade INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES USUARIOS (id),
+    FOREIGN KEY (lote_remedio_id) REFERENCES LOTE_REMEDIO (id)
+) [42102-232]
+2024-12-04 23:16:47.553084-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIOS" not found; SQL statement:
+CREATE TABLE RESERVA (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    lote_remedio_id BIGINT NOT NULL,
+    quantidade INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES USUARIOS (id),
+    FOREIGN KEY (lote_remedio_id) REFERENCES LOTE_REMEDIO (id)
+) [42102-232]
+2024-12-04 23:17:10.514070-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIOS" not found; SQL statement:
+CREATE TABLE RESERVA (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    lote_remedio_id BIGINT NOT NULL,
+    quantidade INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES USUARIOS (id),
+    FOREIGN KEY (lote_remedio_id) REFERENCES LOTE_REMEDIO (id)
+) [42102-232]
+2024-12-04 23:18:40.481177-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIOS" not found; SQL statement:
+CREATE TABLE RESERVA (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    lote_remedio_id BIGINT NOT NULL,
+    quantidade INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES USUARIOS (id),
+    FOREIGN KEY (lote_remedio_id) REFERENCES LOTE_REMEDIO (id)
+) [42102-232]
+2024-12-04 23:21:41.417564-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RESERVA" already exists; SQL statement:
+CREATE TABLE RESERVA (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    lote_remedio_id BIGINT NOT NULL,
+    quantidade INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES USUARIO (id),
+    FOREIGN KEY (lote_remedio_id) REFERENCES LOTE_REMEDIO (id)
+) [42101-232]
+2024-12-05 03:15:23.502399-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT ALL *  [*]USUARIO"; SQL statement:
+SELECT ALL *  USUARIO [42000-232]
+2024-12-05 03:15:27.581046-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT *  [*]USUARIO"; SQL statement:
+SELECT *  USUARIO [42000-232]
+2024-12-05 03:16:43.572204-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RESERVAS" not found; SQL statement:
+SELECT * FROM RESERVAS [42102-232]
+2024-12-05 05:48:38.942266-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIOS" not found; SQL statement:
+DELETE FROM usuarios [42102-232]
+2024-12-05 05:48:50.429168-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIOS" not found; SQL statement:
+DELETE FROM USUARIOS [42102-232]
+2024-12-05 05:49:33.357782-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIOS" not found; SQL statement:
+DELETE FROM PUBLIC."USUARIOS" [42102-232]
+2024-12-05 05:49:38.274809-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIOS" not found; SQL statement:
+DELETE FROM PUBLIC."USUARIOS" [42102-232]
+2024-12-05 05:49:44.925431-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIOS" not found; SQL statement:
+DELETE FROM "USUARIOS" [42102-232]

@@ -1,0 +1,52 @@
+/* Define que a página ocupa toda a altura e largura */
+.container {
+    height: 100vh; /* 100% da altura da viewport */
+    width: 100%; /* 100% da largura */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f0f4f8; /* Fundo padrão suave */
+}
+
+/* Estilo do título principal */
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo dos subtítulos */
+.subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilo do texto */
+.text {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* Estilo do link de email */
+.email {
+    display: inline-block;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.email:hover {
+    color: #0056b3;
+}

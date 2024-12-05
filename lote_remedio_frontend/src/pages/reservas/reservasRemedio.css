@@ -1,0 +1,33 @@
+.reservas-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px; /* Adiciona um espaço entre cada item de reserva */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+strong {
+    font-weight: bold;
+}
+
+p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+}
